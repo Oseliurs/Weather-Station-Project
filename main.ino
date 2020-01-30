@@ -15,7 +15,7 @@ This is the main file for the ESP8266 based Weather Station
 //------------------------------------------------------------------------------------------
 //Hardware
 #define DHTPIN 2     // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT22     // DHT 22 (AM2302)
+#define DHTTYPE    DHT22     // DHT 22 (AM2302)
 
 //------------------------------------------------------------------------------------------
 //Parameters
@@ -29,9 +29,13 @@ const char* mqttPassword = "Ov96Hf66&*";// MQTT Password
 //Variables
 uint32_t delayMS = 2000; // Delay Between Mesurements (in Ms)
 
-float temp
-float humi
-float pres
+float temp;
+float humi;
+float pres;
+
+char temp_s[10];
+char humi_s[10];
+char pres_s[10];
 
 //------------------------------------------------------------------------------------------
 //Objects
@@ -49,7 +53,6 @@ void setup() {
   //----------------------------------------------
   //DHT22 Sensor Init
   dht.begin();
-  delayMS = sensor.min_delay / 1000;
 
   //----------------------------------------------
   //BMP085 Sensor Init
@@ -99,10 +102,10 @@ void loop() {
   dht.humidity().getEvent(&event);
 
   if (isnan(event.relative_humidity)) {
-    Serial.println("Error Reading Humidity")
+    Serial.println("Error Reading Humidity");
   } else {
     humi = event.relative_humidity;
-    Serial.println("Sucessfully Read Humidity")
+    Serial.println("Sucessfully Read Humidity");
   }
 
   //----------------------------------------------
@@ -111,16 +114,21 @@ void loop() {
   temp = bmp.readTemperature();
   pres = bmp.readPressure();
   
+  //
+  //
+  sprintf(temp_s, "%f", temp);
+  sprintf(humi_s, "%f", humi);
+  sprintf(pres_s, "%f", pres);
 
   //----------------------------------------------
   // Publish the recordings
-  client.publish("sensor0/temp", temp);
-  client.publish("sensor0/humi", humi);
-  client.publish("sensor0/pres", pres);
+  client.publish("sensor0/temp", temp_s);
+  client.publish("sensor0/humi", humi_s);
+  client.publish("sensor0/pres", pres_s);
 
   //
   //
-  Serial.println("Reporting the Data:")
+  Serial.println("Reporting the Data:");
   Serial.println(temp);
   Serial.println(humi);
   Serial.println(pres);
