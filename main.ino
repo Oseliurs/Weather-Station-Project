@@ -43,7 +43,6 @@ void setup() {
   Serial.begin(9600); //Start Serial
 
   dht.begin();
-  delayMS = sensor.min_delay / 1000;
   
   
 }
