@@ -113,13 +113,12 @@ void loop() {
 
   temp = bmp.readTemperature();
   pres = bmp.readPressure();
-  Serial.println("Sucessfully Read Pressure and Temperature");
   
-  //
-  //
-  sprintf(temp_s, "%f", temp);
-  sprintf(humi_s, "%f", humi);
-  sprintf(pres_s, "%f", pres);
+  //----------------------------------------------
+  //String Formatting
+  sprintf(temp_s, "%g", temp);
+  sprintf(humi_s, "%g", humi);
+  sprintf(pres_s, "%g", pres);
 
   //----------------------------------------------
   // Publish the recordings
@@ -130,7 +129,16 @@ void loop() {
   //
   //
   Serial.println("Reporting the Data:");
-  Serial.println(temp);
-  Serial.println(humi);
-  Serial.println(pres);
+  Serial.print("Temperature ");
+  Serial.print(temp);
+  Serial.print(" / ");
+  Serial.println(temp_s);
+  Serial.print("Humidité ");
+  Serial.print(humi);
+  Serial.print(" / ");
+  Serial.println(humi_s);
+  Serial.print("Pression ");
+  Serial.print(pres);
+  Serial.print(" / ");
+  Serial.println(pres_s);
 }
