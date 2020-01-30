@@ -17,7 +17,7 @@ This is the main file for the ESP8266 based Weather Station
 //------------------------------------------------------------------------------------------
 //Hardware
 #define DHTPIN 2     // Digital pin connected to the DHT sensor
-#define DHTTYPE    DHT22     // DHT 22 (AM2302)
+#define DHTTYPE DHT22     // DHT 22 (AM2302)
 
 //------------------------------------------------------------------------------------------
 //Parameters
