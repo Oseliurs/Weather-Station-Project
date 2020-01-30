@@ -113,6 +113,7 @@ void loop() {
 
   temp = bmp.readTemperature();
   pres = bmp.readPressure();
+  Serial.println("Sucessfully Read Pressure and Temperature");
   
   //
   //
