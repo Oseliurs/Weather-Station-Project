@@ -4,7 +4,8 @@ This is the main file for the ESP8266 based Weather Station
 
 */
 
-/------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+//Libraries
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <Wire.h>
@@ -13,23 +14,43 @@ This is the main file for the ESP8266 based Weather Station
 #include <DHT.h>
 #include <DHT_U.h>
 
+//------------------------------------------------------------------------------------------
+//Hardware
+#define DHTPIN 2     // Digital pin connected to the DHT sensor
+#define DHTTYPE    DHT22     // DHT 22 (AM2302)
 
+//------------------------------------------------------------------------------------------
+//Parameters
+const char* ssid = "Livebox-68D7"; // Enter your WiFi name
+const char* mqttServer = "rutaceae.ddns.net";
+const int mqttPort = 1883;
+const char* mqttUser = "user";
+const char* mqttPassword = "Ov96Hf66&*";
 
-/------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+//Variables
+uint32_t delayMS;
+
+//------------------------------------------------------------------------------------------
+//Objects
+DHT_Unified dht(DHTPIN, DHTTYPE);
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+//------------------------------------------------------------------------------------------
+//Setup
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600); //Start Serial
 
+  dht.begin();
+  delayMS = sensor.min_delay / 1000;
+  
+  
 }
 
-/------------------------------------------------------------------------------------------
-void setup() {
-  // put your setup code here, to run once:
-
-}
-
-/------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+//Loop
 void loop() {
-  // put your main code here, to run repeatedly:
+  delay(delayMS); // Delay between measurements.
 
 }
-
