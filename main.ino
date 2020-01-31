@@ -96,6 +96,27 @@ void setup() {
 void loop() {
   delay(delayMS); // Delay between measurements.
 
+  //
+  // Verify Connection to MQTT & Wifi
+
+  // Connect to Wifi
+  if (WiFi.status() != WL_CONNECTED){
+    WiFi.begin(ssid);
+  }
+  
+  // Wait for Connexion
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.println("Connecting to WiFi..");
+  }
+
+  // Connect to MQTT
+  while (!client.connected()){
+    client.connect("ESP8266Client", mqttUser, mqttPassword ))
+    delay(2000)
+  }
+
+  
   //----------------------------------------------
   //DHT22 Sensors Part
   sensors_event_t event;
