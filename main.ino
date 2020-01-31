@@ -112,8 +112,9 @@ void loop() {
 
   // Connect to MQTT
   while (!client.connected()){
-    client.connect("ESP8266Client", mqttUser, mqttPassword ))
-    delay(2000)
+    Serial.println("Lost connection with MQTT Server. Reconnecting...");
+    client.connect("ESP8266Client", mqttUser, mqttPassword );
+    delay(2000);
   }
 
   
