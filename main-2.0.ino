@@ -19,11 +19,11 @@ This is the main file for the ESP8266 based Weather Station
 
 //------------------------------------------------------------------------------------------
 //Parameters
-const char* ssid = "Livebox-68D7"; // Wifi Name
-const char* mqttServer = "rutaceae.ddns.net"; // Wifi Password
+const char* ssid = "YOUR SSID HERE"; // Wifi Name
+const char* mqttServer = "YOUR MQTT BROQUER ADRESS HERE"; // Broquer Adress
 const int mqttPort = 1883; // MQTT Port
-const char* mqttUser = "user"; // MQTT User
-const char* mqttPassword = "Ov96Hf66&*";// MQTT Password
+const char* mqttUser = "YOUR MQTT USER HERE"; // MQTT User
+const char* mqttPassword = "YOUR MQTT PASSWORD HERE";// MQTT Password
 
 //------------------------------------------------------------------------------------------
 //Variables
