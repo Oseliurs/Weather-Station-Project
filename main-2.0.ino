@@ -27,7 +27,7 @@ const char* mqttPassword = "Ov96Hf66&*";// MQTT Password
 
 //------------------------------------------------------------------------------------------
 //Variables
-uint32_t delayMS = 2000; // Delay Between Mesurements (in Ms)
+uint32_t delayS = 60; // Delay Between Mesurements (in Ms)
 
 float temp;
 float humi;
@@ -88,35 +88,8 @@ void setup() {
  
     }
   }
-  //----------------------------------------------
-}
-
-//------------------------------------------------------------------------------------------
-//Loop
-void loop() {
-  delay(delayMS); // Delay between measurements.
-
-  //
-  // Verify Connection to MQTT & Wifi
-
-  // Connect to Wifi
-  if (WiFi.status() != WL_CONNECTED){
-    WiFi.begin(ssid);
-  }
-  
-  // Wait for Connexion
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.println("Connecting to WiFi..");
-  }
-
-  // Connect to MQTT
-  while (!client.connected()){
-    Serial.println("Lost connection with MQTT Server. Reconnecting...");
-    client.connect("ESP8266Client", mqttUser, mqttPassword );
-    delay(2000);
-  }
-
+  //----------------------------------------------------------------------------------------
+  // Old loop part now in just the init
   
   //----------------------------------------------
   //DHT22 Sensors Part
@@ -163,4 +136,14 @@ void loop() {
   Serial.print(pres);
   Serial.print(" / ");
   Serial.println(pres_s);
+
+  //----------------------------------------------
+  // Deep Sleep
+  ESP.deepSleep(delayS * 1000000);
 }
+
+
+
+//Loop
+void loop() {
+  }
