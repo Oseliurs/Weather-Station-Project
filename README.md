@@ -1,6 +1,9 @@
 # Weather-Station-Project
 [Work in Progress] A small weather station with MQTT DHT22 and BMP085
 
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+
 ## Version 1.0
 
 This is the basic ardiuino code for the weather station.
