@@ -35,3 +35,7 @@ I also added a publish to a presence topic for detecting when something went wro
 - [x] Battery Saving with DeepSleep
 - [ ] Battery Monitoring
 - [ ] Non Wifi wireless communication
+
+## Schematics
+
+![Schematics](image.png)
