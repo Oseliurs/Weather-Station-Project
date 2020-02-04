@@ -1,9 +1,6 @@
 # Weather-Station-Project
 [Work in Progress] A small weather station with MQTT DHT22 and BMP085
 
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
-
 ## Version 1.0
 
 This is the basic ardiuino code for the weather station.
@@ -31,3 +28,10 @@ I also added a publish to a presence topic for detecting when something went wro
 
 **Important** You have to connect the **D0** pin to the **Reset** pin.
 
+## Work in progress
+
+- [x] Basic working code
+- [x] Reconnection when disconnected
+- [x] Battery Saving with DeepSleep
+- [ ] Battery Monitoring
+- [ ] Non Wifi wireless communication
