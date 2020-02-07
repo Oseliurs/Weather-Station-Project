@@ -88,7 +88,6 @@ void setup() {
  
     }
   }
-  
   //----------------------------------------------
   // Publish Alive
   client.publish("sensor0/alive", "True");
@@ -103,6 +102,7 @@ void setup() {
 
   if (isnan(event.relative_humidity)) {
     Serial.println("Error Reading Humidity");
+    
   } else {
     humi = event.relative_humidity;
     Serial.println("Sucessfully Read Humidity");
@@ -119,12 +119,18 @@ void setup() {
   sprintf(temp_s, "%g", temp);
   sprintf(humi_s, "%g", humi);
   sprintf(pres_s, "%g", pres);
+    if (isnan(event.relative_humidity)){
+    sprintf(humi_s, "NaN");
+  }
 
   //----------------------------------------------
   // Publish the recordings
   client.publish("sensor0/temp", temp_s);
   client.publish("sensor0/humi", humi_s);
   client.publish("sensor0/pres", pres_s);
+
+  delay(2000);
+
 
   //
   //
